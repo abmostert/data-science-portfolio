@@ -1,4 +1,4 @@
-For titanic data and files.
+For titanic data and files (titanic_data.ipynb & titanic_train.csv).
 
 This project is based upon Nick McCullum's tutorial https://www.nickmccullum.com/python-machine-learning/logistic-regression-python/#the-data-set-we-will-be-using-in-this-tutorial
 
