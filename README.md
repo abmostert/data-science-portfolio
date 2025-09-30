@@ -3,8 +3,10 @@ The data files in this repository reflects data science projects. These projects
 1. Titanic Data investigation
 2. California Housing Data Investigation
 
+-------
 
 1. Titanic Data investigation
+   
   For titanic data and files (titanic_data.ipynb & titanic_train.csv).
 
   This project is based upon Nick McCullum's tutorial https://www.nickmccullum.com/python-machine-learning/logistic-regression-python/#the-data-set-we-will-be-using-in-this-tutorial
@@ -18,8 +20,11 @@ The data files in this repository reflects data science projects. These projects
   Other notes:
   For the logistic regression model, people may want to use it, since, it is in essence based upon linear regression, a well understood method of training using data and then making predictions. However, if we have a situation in which we want to get predict a binary outcome, yes/no, 1/0 etc. using the standard linear regression will not work as the values for y can in principle span from -inf to +inf. Instead, we want to model the probability of the binary outcome. The way to use linear regression is to find a way to use a linear function, and relate it to probability. Here you set your linear function to the log of the odds, which is p/(1-p). You use odds, as this is related to probability, and the log allows you to deal with large negative values. Then, you use the Maximum Likelihood Estimation function to estimate the parameters. The estimator is constructed on equaling an observation with one Bernoulli outcome. Since each observation/person has its own unique probability, you need to multiply the probabilities for each observation together. This function you then try to maximise. 
 
+-----  
+
 2. California Housing Data Investigation
-   For the California Housing data and files (scikitlearn - California Housing Dataset Training.ipynb & data extracted using python library scikitlearn).
+  
+  For the California Housing data and files (scikitlearn - California Housing Dataset Training.ipynb & data extracted using python library scikitlearn).
 
    The purpose of this project was to use scikitlearn in a Jupyter notebook to build a linear regression model. Then apply a train_test_split, fit a LinearRegression model and perform a 5fold crossvalidation (cross_val_score), compute R² and RMSE, and create a residual plot.
 
