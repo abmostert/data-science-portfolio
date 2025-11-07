@@ -1,0 +1,17 @@
+{
+  "name": "Python Codespace",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "postCreateCommand": "python -m venv .venv && . .venv/bin/activate && python -m pip install -U pip ipykernel && pip install -r requirements.txt && python -m ipykernel install --user --name codespace-venv",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter"
+      ]
+    }
+  }
+}
