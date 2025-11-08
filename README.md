@@ -2,6 +2,7 @@ The data files in this repository reflects data science projects. These projects
 
 1. Titanic Data investigation
 2. California Housing Data Investigation
+3. Titanic Data investigation 2
 
 -------
 
@@ -31,4 +32,13 @@ The data files in this repository reflects data science projects. These projects
    I learned how the cross validation works, which is to systematically create train/test data sets, rotate through them, and obtain basic metrics such as R² and RMSE to ensure consistency of performance of the linear regression.
    As part of the investigation, I inspected the data, before the cross validation, to see how the linear regression performed, by how the different variables impacted the median house price. From the scatterplots, the worst performer was median income. So I did test the linear regression without using median income, but the model was significantly worst, both in a train/test and cross validation.
    The data seems to be fairly well predicted by the linear regression. What I then did was attempted to put uncertainy values on the coefficients and intercept. I first tested for a normal distribution using box and whisker plot, residual historgram and a QQ plot. All the plots indicated that the distribution is not normal. As such, I did a bootstrapping method to generate multiple coefficients, from which I then extracted percentiles consistent with 2 sigma. I also obtained the standard deviation for comparison. Even though the data is not normally distributed, the percentiles and the standard deviation gave similar results.
-   
+
+-----
+
+3. Titanic Data investigation 2
+
+  The workflow begins with training and tuning a single Decision Tree model. A Decision Tree is simple and interpretable, making it ideal for understanding which features are most influential and for exploring how hyperparameters such as max_depth, min_samples_split, and min_samples_leaf affect bias, variance, and overfitting. Once the Decision Tree’s parameters are optimized and its behaviour understood, this insight is used as an initial guide for building a Random Forest model.
+
+  A Random Forest is essentially an ensemble (an average) of many Decision Trees, each trained on different random subsets of the data and features. This averaging process greatly reduces variance and improves generalization compared to any single tree, at the cost of some interpretability. In practice, the tuned Decision Tree provides intuition about appropriate model complexity, while the Random Forest applies that understanding to achieve stronger and more stable predictive performance.
+
+  In the final model, the most important determinants of survival were Sex (female passengers had a much higher survival rate) and Fare, which reflects ticket class and socioeconomic status—consistent with historical accounts of the Titanic disaster.
