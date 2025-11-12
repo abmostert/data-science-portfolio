@@ -3,6 +3,7 @@ The data files in this repository reflects data science projects. These projects
 1. Titanic Data investigation
 2. California Housing Data Investigation
 3. Titanic Data investigation 2
+4. Moscow Housing Data
 
 -------
 
@@ -42,3 +43,49 @@ The data files in this repository reflects data science projects. These projects
   A Random Forest is essentially an ensemble (an average) of many Decision Trees, each trained on different random subsets of the data and features. This averaging process greatly reduces variance and improves generalization compared to any single tree, at the cost of some interpretability. In practice, the tuned Decision Tree provides intuition about appropriate model complexity, while the Random Forest applies that understanding to achieve stronger and more stable predictive performance.
 
   In the final model, the most important determinants of survival were Sex (female passengers had a much higher survival rate) and Fare, which reflects ticket class and socioeconomic status—consistent with historical accounts of the Titanic disaster.
+
+  -----
+
+4. Moscow Housing Data
+
+  Exploratory Data Analysis (EDA) was the most critical step in this project. It was during EDA that I identified a power-law relationship between price and area — visible as a linear relationship on a log–log plot. Recognizing this pattern early allowed me to log-transform the target (Price), which stabilized variance and improved model fit. This transformation was crucial, and experience with data transformations helped reveal it quickly.
+
+  Given the very large number of categorical features (especially metro stations), it was not feasible to explore each one individually. Instead, focusing on core structural and locational variables — such as area, district, and building type — yielded the main insights efficiently.
+
+  Modeling Results and Observations
+
+  Linear Regression
+  The initial linear regression gave an R² around 0.90 on a single train/test split — a strong start, though possibly optimistic.
+  Using 5-fold cross-validation, the mean R² fell to ~0.79, demonstrating why cross-validation is essential: the original split likely benefited from favorable sampling.
+  The residuals were not normally distributed, mainly due to outliers in high-end prices, which is common in housing markets.
+  Despite that, linear regression offered a strong, interpretable baseline.
+
+  Decision Tree and Random Forest
+  The Decision Tree Regressor achieved an R² around 0.94 on its training/validation, but this likely reflects overfitting — a known tendency for single trees to memorize data.
+  In contrast, the Random Forest averaged over many trees and produced a more conservative R² ≈ 0.77, closer to the cross-validated linear regression.
+  The Random Forest highlighted that area (log-transformed) was by far the most influential predictor — a result consistent with the EDA findings.
+
+  Gradient Boosting
+  The Gradient Boosting Regressor produced a cross-validated R² around 0.85–0.89, depending on fold count and early-stopping parameters.
+  It improved accuracy compared to both linear regression and random forest but required significantly more training time and parameter tuning.
+  Once again, area dominated feature importance, reinforcing the robustness of that relationship.
+
+  Overall Reflections
+
+  The project illustrated how EDA informs modeling decisions — identifying the log–log trend between area and price directly shaped the choice of transformations.
+
+  Cross-validation proved essential to separate genuine predictive power from lucky splits.
+
+  Linear regression performed surprisingly well given its simplicity, offering a balance of interpretability, speed, and reliability.
+
+  Ensemble methods (Random Forest, Gradient Boosting) captured nonlinearities and interactions, but at the cost of interpretability and computation time.
+
+  Interestingly, feature importance rankings varied between methods — a common occurrence since each model type defines “importance” differently (variance reduction vs. coefficient magnitude vs. boosting gain).
+
+  In practice:
+
+  Use Linear Regression for transparency and quick baseline performance.
+
+  Use Gradient Boosting for higher accuracy when time and compute allow.
+
+  Across all models, log(area) remains the single most powerful predictor of price
